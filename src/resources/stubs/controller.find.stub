@@ -1,0 +1,40 @@
+<?php
+
+namespace $NAMESPACE$\$MODULE_NAME$\Cases\$CASE$;
+
+use Techindeck\LaravelModuleGenerator\Contracts\CaseController;
+use Exception;
+
+class $CASE$$MODULE_NAME$Controller extends CaseController
+{
+
+
+    private $CASE$$MODULE_NAME$UseCase $useCase;
+
+    /**
+     */
+    function __construct($CASE$$MODULE_NAME$UseCase $$CASE_REF$$MODULE_NAME$UseCase )
+    {
+        $this->useCase = $$CASE_REF$$MODULE_NAME$UseCase;
+    }
+
+
+
+    /**
+     *
+     * @return mixed
+     */
+    function executeImpl()
+    {
+        $data = $this->req;
+
+        try {
+            $data = $this->useCase->execute($this->id, $data);
+            return response()->json(['data' => $data], $this->res::HTTP_OK);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], $this->res::HTTP_INTERNAL_SERVER_ERROR);
+            // throw new Exception($e->getMessage(), $e->getCode(), $e);
+        }
+    }
+
+}

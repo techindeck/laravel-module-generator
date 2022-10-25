@@ -1,0 +1,72 @@
+<?php
+
+namespace $NAMESPACE$\$MODULE_NAME$\Repository;
+
+
+use Techindeck\LaravelModuleGenerator\Contracts\Repository;
+use $NAMESPACE$\$MODULE_NAME$\Models\$MODULE_NAME$Model;
+
+class $MODULE_NAME$Repository extends Repository
+{
+
+    private $model;
+
+    /**
+     */
+    function __construct($MODULE_NAME$Model $model)
+    {
+        $this->model = $model;
+    }
+
+    /**
+     *
+     * @param mixed $query
+     * @param mixed $row
+     *
+     * @return mixed
+     */
+    function read($query = null, $row = null)
+    {
+    }
+
+    /**
+     *
+     * @param int $id
+     *
+     * @return mixed
+     */
+    function find(int $id)
+    {
+    }
+
+    /**
+     *
+     * @param mixed $data
+     *
+     * @return mixed
+     */
+    function create($data)
+    {
+    }
+
+    /**
+     *
+     * @param int $id
+     * @param mixed $data
+     *
+     * @return mixed
+     */
+    function update(int $id, $data)
+    {
+    }
+
+    /**
+     *
+     * @param int $id
+     *
+     * @return mixed | string
+     */
+    function delete(int $id)
+    {
+    }
+}

@@ -1,0 +1,12 @@
+<?php
+
+
+namespace $NAMESPACE$\$MODULE_NAME$\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class $MODULE_NAME$Model extends Model
+{
+    use HasFactory;
+}

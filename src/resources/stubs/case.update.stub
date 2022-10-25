@@ -1,0 +1,29 @@
+<?php
+
+namespace $NAMESPACE$\$MODULE_NAME$\Cases\$CASE$;
+
+use $NAMESPACE$\$MODULE_NAME$\Repository\$MODULE_NAME$Repository;
+use Exception;
+
+
+class $CASE$$MODULE_NAME$UseCase
+{
+
+    private $MODULE_NAME$Repository $refRepo;
+
+    function __construct($MODULE_NAME$Repository $$MODULE_REF$Repository)
+    {
+        $this->refRepo = $$MODULE_REF$Repository;
+    }
+
+    public function execute(int $id, $data)
+    {
+
+        try {
+            return
+                $this->refRepo->$CASE_LWC$($id, $data);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+}

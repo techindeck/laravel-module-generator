@@ -1,0 +1,52 @@
+<?php
+
+namespace $NAMESPACE$\$MODULE_NAME$\Cases;
+
+use Techindeck\LaravelModuleGenerator\Contracts\ICaseMapper;
+
+use  $NAMESPACE$\$MODULE_NAME$\Cases\Create\Create$MODULE_NAME$Controller;
+use  $NAMESPACE$\$MODULE_NAME$\Cases\Create\Create$MODULE_NAME$UseCase;
+
+use  $NAMESPACE$\$MODULE_NAME$\Cases\Delete\Delete$MODULE_NAME$Controller;
+use  $NAMESPACE$\$MODULE_NAME$\Cases\Delete\Delete$MODULE_NAME$UseCase;
+
+use  $NAMESPACE$\$MODULE_NAME$\Cases\Find\Find$MODULE_NAME$Controller;
+use  $NAMESPACE$\$MODULE_NAME$\Cases\Find\Find$MODULE_NAME$UseCase;
+
+use  $NAMESPACE$\$MODULE_NAME$\Cases\Read\Read$MODULE_NAME$Controller;
+use  $NAMESPACE$\$MODULE_NAME$\Cases\Read\Read$MODULE_NAME$UseCase;
+
+use  $NAMESPACE$\$MODULE_NAME$\Cases\Update\Update$MODULE_NAME$Controller;
+use  $NAMESPACE$\$MODULE_NAME$\Cases\Update\Update$MODULE_NAME$UseCase;
+
+use  $NAMESPACE$\$MODULE_NAME$\Models\$MODULE_NAME$Model;
+use  $NAMESPACE$\$MODULE_NAME$\Repository\$MODULE_NAME$Repository;
+
+class $MODULE_NAME$CaseMapper implements ICaseMapper
+{
+
+    public static function resolverRead()
+    {
+        return  new Read$MODULE_NAME$Controller(new Read$MODULE_NAME$UseCase(new $MODULE_NAME$Repository(new $MODULE_NAME$Model())));
+    }
+
+    public static function resolverFind()
+    {
+        return  new Find$MODULE_NAME$Controller(new Find$MODULE_NAME$UseCase(new $MODULE_NAME$Repository(new $MODULE_NAME$Model())));
+    }
+
+    public static function resolverCreate()
+    {
+        return  new Create$MODULE_NAME$Controller(new Create$MODULE_NAME$UseCase(new $MODULE_NAME$Repository(new $MODULE_NAME$Model())));
+    }
+
+    public static function resolverUpdate()
+    {
+        return  new Update$MODULE_NAME$Controller(new Update$MODULE_NAME$UseCase(new $MODULE_NAME$Repository(new $MODULE_NAME$Model())));
+    }
+
+    public static function resolverDelete()
+    {
+        return  new Delete$MODULE_NAME$Controller(new Delete$MODULE_NAME$UseCase(new $MODULE_NAME$Repository(new $MODULE_NAME$Model())));
+    }
+}
