@@ -21,7 +21,8 @@ use Techindeck\LaravelModuleGenerator\Console\Gateway\GatewayCommand;
 use Techindeck\LaravelModuleGenerator\Console\Repo\RepoCommand;
 use Techindeck\LaravelModuleGenerator\Console\Model\ModelCommand;
 
-use Techindeck\LaravelModuleGenerator\Console\MakeCaseCommand;
+use Techindeck\LaravelModuleGenerator\Console\MakeCommand;
+use Techindeck\LaravelModuleGenerator\Console\Request\CaseRequest;
 
 class ModuleServiceProvider extends ServiceProvider
 {
@@ -45,7 +46,7 @@ class ModuleServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                MakeCaseCommand::class,
+                MakeCommand::class,
                 RepoCommand::class,
                 ModelCommand::class,
                 GatewayCommand::class,
@@ -59,7 +60,8 @@ class ModuleServiceProvider extends ServiceProvider
                 CaseUpdate::class,
                 CaseRead::class,
                 CaseDelete::class,
-                CaseFind::class
+                CaseFind::class,
+                CaseRequest::class
             ]);
         }
     }

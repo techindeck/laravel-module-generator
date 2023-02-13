@@ -1,59 +1,86 @@
 <?php
 
-namespace $NAMESPACE$\$MODULE_NAME$;
+namespace $NAMESPACE$\$MODULE_NAME$\Gateway;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
+use $NAMESPACE$\$MODULE_NAME$\Cases\$MODULE_NAME$CaseMapper as CaseMapper;
+use $NAMESPACE$\$MODULE_NAME$\Request\Create$MODULE_NAME$Interceptor as CreateInterceptor;
 
 class $MODULE_NAME$Gateway
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function index():JsonResponse
+    public function index(Request $request):JsonResponse
     {
+        $request->validated();
+        return CaseMapper::resolverRead()->execute(
+            req: $request->only([]), //If not require then remove
+            res: new Response()
+        );
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @param CreateInterceptor $request
+     * @return JsonResponse
      */
-    public function store(Request $request):JsonResponse
+    public function store(CreateInterceptor $request):JsonResponse
     {
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function show($id):JsonResponse
-    {
+        $request->validated();
+        return CaseMapper::resolverRead()->execute(
+            req: $request->only([]),
+            res: new Response()
+        );
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @param CreateInterceptor $request
+     * @param int $id
+     * @return JsonResponse
      */
-    public function update(Request $request, $id):JsonResponse
+    public function update(CreateInterceptor $request, $id):JsonResponse
     {
+        $request->validated();
+        return CaseMapper::resolverUpdate()->execute(
+            req: $request->only([]),
+            res: new Response(),
+            id: $id
+        );
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return JsonResponse
+     */
+    public function show($id):JsonResponse
+    {
+        return CaseMapper::resolverRead()->execute(
+            res: new Response(),
+            id: $id
+        );
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @param  int $id
+     * @return JsonResponse
      */
     public function destroy($id):JsonResponse
     {
+        return CaseMapper::resolverDelete()->execute(
+            res: new Response(),
+            id: $id
+        );
     }
 }
