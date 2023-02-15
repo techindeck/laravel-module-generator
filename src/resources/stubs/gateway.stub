@@ -33,7 +33,7 @@ class $MODULE_NAME$Gateway
     public function store(CreateInterceptor $request):JsonResponse
     {
         $request->validated();
-        return CaseMapper::resolverRead()->execute(
+        return CaseMapper::resolverCreate()->execute(
             req: $request->only([]),
             res: new Response()
         );
@@ -43,7 +43,7 @@ class $MODULE_NAME$Gateway
      * Update the specified resource in storage.
      *
      * @param CreateInterceptor $request
-     * @param int $id
+     * @param mixed $id
      * @return JsonResponse
      */
     public function update(CreateInterceptor $request, $id):JsonResponse
@@ -59,12 +59,12 @@ class $MODULE_NAME$Gateway
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param mixed $id
      * @return JsonResponse
      */
     public function show($id):JsonResponse
     {
-        return CaseMapper::resolverRead()->execute(
+        return CaseMapper::resolverFind()->execute(
             res: new Response(),
             id: $id
         );
@@ -73,7 +73,7 @@ class $MODULE_NAME$Gateway
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  mixed $id
      * @return JsonResponse
      */
     public function destroy($id):JsonResponse

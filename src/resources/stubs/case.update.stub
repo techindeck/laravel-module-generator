@@ -16,7 +16,7 @@ class $CASE$$MODULE_NAME$UseCase
         $this->refRepo = $$MODULE_REF$Repository;
     }
 
-    public function execute(int $id, $data)
+    public function execute(mixed $id, $data)
     {
 
         try {
