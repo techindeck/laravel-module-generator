@@ -1,15 +1,31 @@
 <?php
 
-namespace  Techindeck\LaravelModuleGenerator\Console\Gateway;
+namespace Techindeck\LaravelModuleGenerator\Console\Request;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Pluralizer;
 
-class GatewayCommand extends Command
+class CaseRequest extends Command
 {
 
-    private $stubPath = '/../../resources/stubs/gateway.stub';
+    private  $action = '';
+    private $stubPath = '/../../resources/stubs/request.stub';
+
+
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'module:request {name} {action}';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Create a new case request for create/update use case';
 
 
     /**
@@ -28,23 +44,6 @@ class GatewayCommand extends Command
 
         $this->files = $files;
     }
-
-
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'module:gateway {name : name of the gateway}';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Make a gateway for a specified module';
-
-
 
 
     /**
@@ -78,7 +77,10 @@ class GatewayCommand extends Command
     {
         return [
             'NAMESPACE'         => 'App\\Modules',
-            'MODULE_NAME'        => $this->getSingularClassName($this->argument('name')),
+            'MODULE_NAME'       => $this->getSingularClassName($this->argument('name')),
+            'MODULE_REF'        => lcfirst($this->getSingularClassName($this->argument('name'))),
+            'CASE'              => $this->argument('action'),
+            'CASE_LWC'          => strtolower($this->argument('action')),
         ];
     }
 
@@ -119,11 +121,9 @@ class GatewayCommand extends Command
      */
     public function getSourceFilePath()
     {
+        $name = $this->getSingularClassName($this->argument('name'));
 
-        return
-            base_path('App\\Modules') . '\\' .
-            $this->getSingularClassName($this->argument('name')) . '\\' . 'Gateway\\' .
-            $this->getSingularClassName($this->argument('name')) . 'Gateway.php';
+        return base_path('App\\Modules') . '\\' . $name . '\\' . 'Request\\Create' . $name . 'Interceptor.php';
     }
 
     /**
@@ -150,23 +150,16 @@ class GatewayCommand extends Command
      */
     public function handle()
     {
+
+
+
         $path = $this->getSourceFilePath();
         $this->makeDirectory(dirname($path));
-
         $contents = $this->getSourceFile();
 
         if (!$this->files->exists($path)) {
             $this->files->put($path, $contents);
             $this->info("File : {$path} created");
-            $this->info('module:request');
-            $this->call('module:request', [
-                'name' => $this->argument('name'),
-                'action' => 'create'
-            ]);
-            $this->info('module:resource');
-            $this->call('module:resource', [
-                'name' => $this->argument('name')
-            ]);
         } else {
             $this->info("File : {$path} already exits");
         }
