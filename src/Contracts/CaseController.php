@@ -15,17 +15,81 @@ abstract class CaseController extends Controller
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected mixed $req;
-    protected int |null $id;
+    private mixed $req;
+    private mixed $id;
     protected Response $res;
+
+
+    /**
+     * @return Response
+     */
+    public function getRes(): Response
+    {
+        return $this->res;
+    }
+
+    /**
+     * @return self
+     */
+    public function setRes(): self
+    {
+        $this->res = new Response();
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId(): mixed
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     * @return self
+     */
+    public function setId(mixed $id): self
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getReq(): mixed
+    {
+        return $this->req;
+    }
+
+
+    /**
+     * @param mixed $req
+     * @return self
+     */
+    public function setReq(mixed $req): self
+    {
+        $this->req = $req;
+        return $this;
+    }
+
 
     protected abstract function executeImpl();
 
-    public function execute(?array $req = null, ?Response $res, ?int $id = null): JsonResponse
+    /**
+     * execute
+     *
+     * @param  mixed|Request $req
+     * @param  mixed $id
+     *
+     */
+    public function execute($req = null, $id = null)
     {
-        $this->req = $req;
-        $this->res = $res;
-        $this->id = $id;
+        $this->setId($id);
+        $this->setReq($req);
+        $this->setRes();
         return $this->executeImpl();
     }
 }

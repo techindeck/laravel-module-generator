@@ -26,13 +26,13 @@ class $CASE$$MODULE_NAME$Controller extends CaseController
      */
     function executeImpl()
     {
-        $data = $this->req;
+        $data = $this->getReq();
 
         try {
-            $data = $this->useCase->execute($this->id, $data);
-            return response()->json(['data' => $data], $this->res::HTTP_OK);
+            $data = $this->useCase->execute($this->getId(), $data);
+            return response()->json($data, $this->getRes()::HTTP_OK);
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], $this->res::HTTP_INTERNAL_SERVER_ERROR);
+            return response()->json(['error' => $e->getMessage()], $this->getRes()::HTTP_INTERNAL_SERVER_ERROR);
             // throw new Exception($e->getMessage(), $e->getCode(), $e);
         }
     }

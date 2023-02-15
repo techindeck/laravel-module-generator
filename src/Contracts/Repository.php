@@ -4,34 +4,39 @@ namespace Techindeck\LaravelModuleGenerator\Contracts;
 
 abstract class Repository
 {
-    /**
-     * @return mixed
-     */
-    abstract function read($query = null, $row = null);
 
     /**
-     * @param int $id
+     * read
+     *
+     * @param  mixed $query
      * @return mixed
      */
-    abstract function find(int $id);
+    abstract function read($query = null);
 
 
     /**
-     * @param $data
+     * @param mixed $id
      * @return mixed
      */
-    abstract function create($data);
+    abstract function find(mixed $id);
+
 
     /**
-     * @param int $id
-     * @param $data
+     * @param mixed $data
      * @return mixed
      */
-    abstract function update(int $id, $data);
+    abstract function create(mixed $data);
 
     /**
-     * @param int $id
+     * @param mixed $id
+     * @param mixed $data
      * @return mixed
      */
-    abstract function delete(int $id);
+    abstract function update(mixed $id, mixed $data);
+
+    /**
+     * @param mixed $id
+     * @return mixed
+     */
+    abstract function delete(mixed $id);
 }

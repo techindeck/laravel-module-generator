@@ -19,8 +19,7 @@ class $MODULE_NAME$Gateway
     {
         // $request->validated();
         return CaseMapper::resolverRead()->execute(
-            req: $request->only([]), //If not require then remove
-            res: new Response()
+            req: $request->only([])
         );
     }
 
@@ -34,8 +33,7 @@ class $MODULE_NAME$Gateway
     {
         $request->validated();
         return CaseMapper::resolverCreate()->execute(
-            req: $request->only([]),
-            res: new Response()
+            req: $request->only([])
         );
     }
 
@@ -51,7 +49,6 @@ class $MODULE_NAME$Gateway
         $request->validated();
         return CaseMapper::resolverUpdate()->execute(
             req: $request->only([]),
-            res: new Response(),
             id: $id
         );
     }
@@ -65,7 +62,7 @@ class $MODULE_NAME$Gateway
     public function show($id):JsonResponse
     {
         return CaseMapper::resolverFind()->execute(
-            res: new Response(),
+            req: null,
             id: $id
         );
     }
@@ -79,7 +76,7 @@ class $MODULE_NAME$Gateway
     public function destroy($id):JsonResponse
     {
         return CaseMapper::resolverDelete()->execute(
-            res: new Response(),
+            req: null,
             id: $id
         );
     }

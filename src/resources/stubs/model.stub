@@ -4,11 +4,12 @@
 namespace $NAMESPACE$\$MODULE_NAME$\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Techindeck\LaravelModuleGenerator\Contracts\ModelUUIDTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class $MODULE_NAME$Model extends Model
 {
-    use HasFactory;
+    use HasFactory, ModelUUIDTrait;
 
     protected $table = '';
 
@@ -27,7 +28,7 @@ class $MODULE_NAME$Model extends Model
      * @var array<int, string>
      */
     protected $hidden = [
-
+        'id'
     ];
 
     /**
