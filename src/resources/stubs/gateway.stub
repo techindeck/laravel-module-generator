@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
 use $NAMESPACE$\$MODULE_NAME$\Cases\$MODULE_NAME$CaseMapper as CaseMapper;
-use $NAMESPACE$\$MODULE_NAME$\Request\Create$MODULE_NAME$Interceptor as CreateInterceptor;
+use $NAMESPACE$\$MODULE_NAME$\Request\Create$MODULE_NAME$FormRequestPolicy as CreateFormRequestPolicy;
 
 class $MODULE_NAME$Gateway
 {
@@ -26,10 +26,10 @@ class $MODULE_NAME$Gateway
     /**
      * Store a newly created resource in storage.
      *
-     * @param CreateInterceptor $request
+     * @param CreateFormRequestPolicy $request
      * @return JsonResponse
      */
-    public function store(CreateInterceptor $request):JsonResponse
+    public function store(CreateFormRequestPolicy $request):JsonResponse
     {
         $request->validated();
         return CaseMapper::resolverCreate()->execute(
@@ -40,11 +40,11 @@ class $MODULE_NAME$Gateway
     /**
      * Update the specified resource in storage.
      *
-     * @param CreateInterceptor $request
+     * @param CreateFormRequestPolicy $request
      * @param mixed $id
      * @return JsonResponse
      */
-    public function update(CreateInterceptor $request, $id):JsonResponse
+    public function update(CreateFormRequestPolicy $request, $id):JsonResponse
     {
         $request->validated();
         return CaseMapper::resolverUpdate()->execute(

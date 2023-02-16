@@ -5,8 +5,7 @@ namespace $NAMESPACE$\$MODULE_NAME$\Request;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-
-class Create$MODULE_NAME$Interceptor extends FormRequest
+class Create$MODULE_NAME$FormRequestPolicy extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

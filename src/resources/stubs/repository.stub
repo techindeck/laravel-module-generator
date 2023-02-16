@@ -27,6 +27,7 @@ class $MODULE_NAME$Repository extends Repository
      */
     function read($query = null, $row = null)
     {
+        return $this->model->get();
     }
 
     /**
@@ -37,6 +38,7 @@ class $MODULE_NAME$Repository extends Repository
      */
     function find(mixed $id)
     {
+        return $this->model->where('uuid', $id)->get();
     }
 
     /**

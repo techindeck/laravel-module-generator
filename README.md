@@ -1,14 +1,16 @@
 # laravel-module-generator
 
-Create laravel application modules inspired by CLEAN & SOLID design pattern
+Create laravel application modules inspired by CLEAN design pattern
 
 [Latest Version on Packagist](https://packagist.org/packages/techindeck/laravel-module-generator)
 
 [Total Downloads](https://packagist.org/packages/techindeck/laravel-module-generator)
 
-This package allows you to easily generate a application module followed by
-[<img src="https://cdn-images-1.medium.com/max/1200/1*B7LkQDyDqLN3rRSrNYkETA.jpeg" />](CLEAN) and SOLID design pattern.
 
+
+This package allows you to easily generate a application module followed by [SOLID](https://en.wikipedia.org/wiki/SOLID) Principle and CLEAN Architecture
+
+[<img src="https://cdn-images-1.medium.com/max/1200/1*B7LkQDyDqLN3rRSrNYkETA.jpeg" />](CLEAN)
 ## Installation
 
 You can install the package via composer:
@@ -19,23 +21,27 @@ composer require techindeck/laravel-module-generator
 
 ## Usage
 
-You can generate a module using the `make:module` on the `Artisan CLI`.
+You can generate a module using the `make:module <module name>`  on the `Artisan CLI`, will generate a module under `App\Modules` directory in the Laravel application
 
 ```php
-php artisan make:module 'module' -mpcsg -aurdf
+With all option         :    php artisan make:module 'module' -a
+With specific options   :    php artisan make:module 'module' -mpcsg -aurdf
 ```
+
 
 Available options:
 
 ```php
 Shorthand   Options             Description
-  -c        --controller        crate cases controller
-  -s        --case              create usecases
-  -g        --gateway           crate module gateway
-  -p        --repo              create module repository
-  -m        --model             create module model
+  -a        --all               create module with all options
+  -C        --controller        crate cases controller
+  -U        --case              create usecases
+  -G        --gateway           crate module gateway
+  -R        --repo              create module repository
+  -M        --model             create module model
+  -F        --request           create gateway form request validation policy
 
-  -a        --add               create usecase add
+  -c        --add               create usecase add
   -u        --update            create usecase update
   -r        --read              create usecase read
   -d        --delete            create usecase delete
