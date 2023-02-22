@@ -121,8 +121,8 @@ class GatewayCommand extends Command
     {
 
         return
-            base_path('App\\Modules') . '\\' .
-            $this->getSingularClassName($this->argument('name')) . '\\' . 'Gateway\\' .
+            base_path('App/Modules') . '/' .
+            $this->getSingularClassName($this->argument('name')) . '/' . 'Gateway/' .
             $this->getSingularClassName($this->argument('name')) . 'Gateway.php';
     }
 

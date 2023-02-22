@@ -123,7 +123,7 @@ class CaseRequest extends Command
     {
         $name = $this->getSingularClassName($this->argument('name'));
 
-        return base_path('App\\Modules') . '\\' . $name . '\\' . 'Request\\Create' . $name . 'FormRequestPolicy.php';
+        return base_path('App/Modules') . '/' . $name . '/' . 'Request/Create' . $name . 'FormRequestPolicy.php';
     }
 
     /**

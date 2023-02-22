@@ -1,26 +1,27 @@
 {
-  "name": "techindeck/laravel-module-generator",
-  "description": "Create application modules followed by CLEAN pattern",
-  "type": "library",
-  "license": "MIT",
+  "authors": [
+    {
+      "email": "support@techindeck.com",
+      "name": "Techindeck"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "Techindeck\\LaravelModuleGenerator\\": "src/"
     }
   },
-  "authors": [
-    {
-      "name": "Techindeck",
-      "email": "support@techindeck.com"
-    }
-  ],
-  "minimum-stability": "RC",
-  "require": {},
+  "description": "Create application modules followed by CLEAN pattern",
   "extra": {
     "laravel": {
       "providers": [
         "Techindeck\\LaravelModuleGenerator\\ModuleServiceProvider"
       ]
     }
-  }
+  },
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "name": "techindeck/laravel-module-generator",
+  "prefer-stable": true,
+  "require": {},
+  "type": "library"
 }

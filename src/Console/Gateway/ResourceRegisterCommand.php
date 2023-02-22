@@ -77,7 +77,7 @@ class ResourceRegisterCommand extends Command
     public function getSourceFilePath()
     {
 
-        return base_path('routes') . '\\' . 'api.php';
+        return base_path('routes') . '/' . 'api.php';
     }
 
 

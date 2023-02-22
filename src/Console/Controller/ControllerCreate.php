@@ -124,7 +124,7 @@ class ControllerCreate extends Command
     {
         $name = $this->getSingularClassName($this->argument('name'));
 
-        return base_path('App\\Modules') . '\\' . $name . '\\' . 'Cases\\' .  $this->action . '\\' . $this->action . $name . 'Controller.php';
+        return base_path('App/Modules') . '/' . $name . '/' . 'Cases/' .  $this->action . '/' . $this->action . $name . 'Controller.php';
     }
 
     /**
