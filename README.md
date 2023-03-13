@@ -6,11 +6,10 @@ Create laravel application modules inspired by CLEAN design pattern
 
 [Total Downloads](https://packagist.org/packages/techindeck/laravel-module-generator)
 
-
-
 This package allows you to easily generate a application module followed by [SOLID](https://en.wikipedia.org/wiki/SOLID) Principle and CLEAN Architecture
 
 [<img src="https://cdn-images-1.medium.com/max/1200/1*B7LkQDyDqLN3rRSrNYkETA.jpeg" />](CLEAN)
+
 ## Installation
 
 You can install the package via composer:
@@ -25,9 +24,8 @@ You can generate a module using the `make:module <module name>`  on the `Artisan
 
 ```php
 With all option         :    php artisan make:module 'module' -a
-With specific options   :    php artisan make:module 'module' -mpcsg -aurdf
+With specific options   :    php artisan make:module 'module' -CUGMRF -curdf
 ```
-
 
 Available options:
 

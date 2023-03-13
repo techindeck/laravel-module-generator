@@ -10,7 +10,7 @@ class ResourceRegisterCommand extends Command
 {
 
 
-    private $stubPath = '/../../resources/stubs/modules.stub';
+    private $stubPath = '/../../resources/stubs/modules-api.stub';
 
 
     /**
@@ -159,10 +159,13 @@ class ResourceRegisterCommand extends Command
             $contents = $this->getContents($this->getStubPath());
             $this->files->put($path, $contents);
             $this->info("File : {$path} created");
+            file_put_contents($this->getApiFilePath(), "require __DIR__.'/modules-api.php';", FILE_APPEND | LOCK_EX);
+            $this->info("File : {$this->getApiFilePath()} updated");
         } else {
             $contents = $this->getContents($path);
             $this->files->put($path, $contents);
-            $this->info("File : {$path} already exits");
+
+            $this->info("File : {$path} updated");
         }
     }
 }
