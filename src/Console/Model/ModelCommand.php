@@ -121,8 +121,8 @@ class ModelCommand extends Command
     {
 
         return
-            base_path('App/Modules') . '/' .
-            $this->getSingularClassName($this->argument('name')) . '/' . 'Models/' .
+            app_path() . '/Modules/' .
+            $this->getSingularClassName($this->argument('name')) . '/Models/' .
             $this->getSingularClassName($this->argument('name')) . 'Model.php';
     }
 

@@ -121,8 +121,8 @@ class RepoCommand extends Command
     {
 
         return
-            base_path('App/Modules') . '/' .
-            $this->getSingularClassName($this->argument('name')) . '/' . 'Repository/' .
+            app_path() . '/Modules/' .
+            $this->getSingularClassName($this->argument('name')) .  '/Repository/' .
             $this->getSingularClassName($this->argument('name')) . 'Repository.php';
     }
 

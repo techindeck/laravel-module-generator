@@ -123,7 +123,7 @@ class ControllerRead extends Command
     {
         $name = $this->getSingularClassName($this->argument('name'));
 
-        return base_path('App/Modules') . '/' . $name . '/' . 'Cases/' .  $this->action . '/' . $this->action . $name . 'Controller.php';
+        return app_path() . '/Modules/' . $name  . '/Cases/' .  $this->action . '/' . $this->action . $name . 'Controller.php';
     }
 
     /**
